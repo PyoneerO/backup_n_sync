@@ -54,6 +54,7 @@ for i in *; do
 		rsync -e ssh -P -v $tar_name $SERVER_NAME:$HS_PERSONAL_PATH/$HS_PERSONAL_STABLE && \
 		rm -f $i $tar_name && echo "stable project "$project_name"in directory "$path_2_project\
 		" successfully backupped as "$tar_name" in "$SERVER_NAME:$HS_PERSONAL_PATH/$HS_PERSONAL_STABLE
+		ssh $SERVER_NAME release $HS_PERSONAL_PATH/$HS_PERSONAL_STABLE/$tar_name
 	fi;
 done
 ) >> $LOGFILE 2>&1
