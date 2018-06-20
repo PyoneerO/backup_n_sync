@@ -3,8 +3,6 @@
 UNAME=`whoami`
 if [[ "$UNAME" == "root" ]]; then exit; fi
 
-LOGFILE="backup_n_sync_"`date +%Y-%m-%d_%H-%M-%S`".log"
-
 SERVER_NAME="hssrv2"
 HS_PERSONAL_PATH="/hs/userm/"$UNAME"/"
 HS_PERSONAL_CURRENT="current"
@@ -13,6 +11,9 @@ HS_PERSONAL_STABLE="stable"
 LOCAL_PATH="/scratch1/"$UNAME"/data2backup/"
 LOCAL_CURRENT="current"
 LOCAL_STABLE="stable"
+
+LOGFILE=$LOCAL_PATH"backup_n_sync_"`date +%Y-%m-%d_%H-%M-%S`".log"
+
 
 
 
