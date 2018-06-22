@@ -59,7 +59,6 @@ for i in *; do
 	fi;
 done
 ) >> $LOGFILE 2>&1
-#release after transfer?
 
 
 #SYNCHRONIZE ONGOING/CURRENT PROJECTS
