@@ -17,7 +17,7 @@ LOGFILE=$LOCAL_PATH"backup_n_sync_"`date +%Y-%m-%d_%H-%M-%S`".log"
 
 
 
-# CREATE NEEDED DIRECTORIES LOCALLY IF NOT EXISTING
+# CREATE NEEDED DIRECTORIES
 (
 echo "#######################################"
 echo -e "\nCREATE NEEDED DIRECTORIES LOCALLY AND ON TAPE SERVER IF NOT EXISTING:"
