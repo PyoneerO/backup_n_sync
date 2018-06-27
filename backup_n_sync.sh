@@ -47,10 +47,10 @@ echo -e "\nBACKUP STABLE PROJECTS NOW:"
 cd $LOCAL_PATH/$LOCAL_STABLE;
 for i in *; do
 	if [[ -L "$i" ]]; then
-      project_name=`readlink $i | awk '{gsub("/$","");print}' | awk -F"/" '{print $(NF)}'` ;
-      path_2_project=`readlink $i | awk '{gsub("/$","");print}' | awk -F"/" '{gsub($(NF),""); print}'`;
+		project_name=`readlink $i | awk '{gsub("/$","");print}' | awk -F"/" '{print $(NF)}'` ;
+		path_2_project=`readlink $i | awk '{gsub("/$","");print}' | awk -F"/" '{gsub($(NF),""); print}'`;
 		echo -e "\nProject " $project_name" in "$path_2_project"\n";
-		tar_name=$project_name"_"`date +%Y-%m-%d_%H-%M-%S`".tar"
+		tar_name=$project_name"_"`date +%Y-%m-%d_%H-%M-%S`".tar";
 		tar -p --acls -c -v -f $tar_name -C $path_2_project $project_name;
 		rsync -e ssh -P -v $tar_name $SERVER_NAME:$HS_PERSONAL_PATH/$HS_PERSONAL_STABLE && \
 		rm -f $i $tar_name && echo "stable project "$project_name"in directory "$path_2_project\
@@ -68,9 +68,9 @@ echo -e "\nSYNCHRONIZE ONGOING PROJECTS NOW:"
 cd $LOCAL_PATH/$LOCAL_CURRENT;
 # <one-way> synchronization
 for i in *; do
-   if [[ -L "$i" ]]; then
-      project_name=`readlink $i | awk '{gsub("/$","");print}' | awk -F"/" '{print $(NF)}'` ;
-      path_2_project=`readlink $i | awk '{gsub("/$","");print}' | awk -F"/" '{gsub($(NF),""); print}'`;
+	if [[ -L "$i" ]]; then
+   		project_name=`readlink $i | awk '{gsub("/$","");print}' | awk -F"/" '{print $(NF)}'` ;
+		path_2_project=`readlink $i | awk '{gsub("/$","");print}' | awk -F"/" '{gsub($(NF),""); print}'`;
 		echo -e "\nProject " $project_name" in "$path_2_project"\n";
 		rsync -e ssh -v -l -u -P -r $path_2_project/$project_name $SERVER_NAME:$HS_PERSONAL_PATH/$HS_PERSONAL_CURRENT && \
 		echo "Ongoing project "$project_name" in directory "$path_2_project\
